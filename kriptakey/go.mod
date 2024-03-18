@@ -1,4 +1,4 @@
-module github.com/kriptakey/kk-go-sdk/kriptakey
+module github.com/degtayrev/KK-GoSDK/kriptakey
 
 go 1.18
 

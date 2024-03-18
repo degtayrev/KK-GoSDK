@@ -199,8 +199,8 @@ import (
 	"runtime"
 	"unsafe"
 
-	kkreq "github.com/kriptakey/kk-go-sdk/kriptakey/request"
-	kkresp "github.com/kriptakey/kk-go-sdk/kriptakey/response"
+	kkreq "github.com/degtayrev/KK-GoSDK/kriptakey/request"
+	kkresp "github.com/degtayrev/KK-GoSDK/kriptakey/response"
 	"google.golang.org/protobuf/proto"
 )
 
