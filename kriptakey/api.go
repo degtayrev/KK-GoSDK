@@ -210,6 +210,20 @@ func kk_gosdk_assign(sourcePtr unsafe.Pointer, sourceSize C.int, targetPtr unsaf
 	*array = C.GoBytes(sourcePtr, sourceSize)
 	return C.int(len(*array))
 }
+
+type ConnectionHandler struct {
+	handler *C.OpaqueConnectionHandlerPtr
+}
+
+type faultCodeError struct {
+	faultcode uint
+}
+
+func (e *faultCodeError) Error() string {
+	return fmt.Sprintf("KK SDK FaultResponseCode: %d", e.faultcode)
+}
+
+func newFaultCode(faultcode uint) error {
 	return &faultCodeError{faultcode: faultcode}
 }
 
@@ -217,6 +231,7 @@ func GetSDKVersion() string {
 	c_version := C.kk_nativesdk_getVersion()
 	return C.GoString(c_version)
 }
+
 
 // NOTE: `caCertPath` parameter is unused and will be ignored
 func InitializeConnection(host string, port uint16, clientCertificatePath string, privateKeyPath string, caCertPath string) (*ConnectionHandler, error) {
